@@ -308,7 +308,9 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
 
-// CHALLENGE 1
+*/
+
+// Coding Challenge #1
 
 const game = {
   team1: 'Bayern Munich',
@@ -392,4 +394,31 @@ printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
 
-*/
+// Coding Challenge #2
+
+for (const item of game.scored.entries()) {
+  console.log(`Goal ${item[0] + 1}: ${item[1]}`);
+}
+
+// // Property Names
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length}
+//  days`;
+// days: for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// // Property Values
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// // Entries object
+// const entries = Object.entries(openingHours);
+// // console.log(entries);
+
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
