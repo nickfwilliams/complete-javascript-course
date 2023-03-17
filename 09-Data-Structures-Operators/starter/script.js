@@ -1,5 +1,42 @@
 'use strict';
 
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+
+// 3.
+
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+
+// 4.
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+
+/*
+
 //MAPS
 
 const rest = new Map();
@@ -78,23 +115,6 @@ console.log(
   new Set(['Waiter', 'Chef', 'Waiter', 'Manger', 'Chef', 'Waiter']).size
 );
 
-const weekdays = ['mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun'];
-
-const openingHours = {
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekdays[5]]: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
-
 //Convert Object to map
 console.log(Object.entries(openingHours));
 const hoursMap = new Map(Object.entries(openingHours));
@@ -118,7 +138,23 @@ console.log(question.get(question.get('correct') === answer));
 
 console.log([...question]);
 
-/*
+
+const weekdays = ['mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 
 
 // Data needed for first part of the section
