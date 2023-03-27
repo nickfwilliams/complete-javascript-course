@@ -1,6 +1,6 @@
 'use strict';
 
-// 1: A Closer Look at Functions -----
+// 1. A Closer Look at Functions -----
 
 /* 
 const bookings = [];
@@ -36,7 +36,7 @@ createBooking('LH123', undefined, 1000);
 
 */
 
-//2: How Passing Arguments Works -----
+//2. How Passing Arguments Works -----
 
 const flight = 'LH234';
 const nick = {
@@ -63,3 +63,10 @@ newPassport(nick);
 checkIn(flight, nick);
 
 // JS does NOT have pass by reference
+
+//3. First-Class and Higher-Order Functions -----
+
+// Functions are simply values - they are just another type of object
+// Higher-order functions are functions that receives another function or returns a new one or both
+//First-class functions and higher order functions are different things
+//First-class functions are just values - it's just a concept
