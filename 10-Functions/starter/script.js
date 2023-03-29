@@ -34,8 +34,6 @@ createBooking('LH123', 5);
 //Skipping an default parameter, use undefined
 createBooking('LH123', undefined, 1000);
 
-*/
-
 //2. How Passing Arguments Works -----
 
 const flight = 'LH234';
@@ -70,3 +68,40 @@ checkIn(flight, nick);
 // Higher-order functions are functions that receives another function or returns a new one or both
 //First-class functions and higher order functions are different things
 //First-class functions are just values - it's just a concept
+
+*/
+
+// 3. Functions Accepting Callback Functions
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+// JS uses callbacks all the time because...
+// 1. It makes it easy to split up the code
+// 2. They allow us to create abstraction - we hide the detail of the code implementation. e.g. The transformer function doesn't care how the words are being transformed. It delegates the job of converting the string,
+
+transformer('JavaScript is the best!', upperFirstWord);
+
+transformer('JavaScript is the best!', oneWord);
+
+const high5 = function () {
+  console.log('👋');
+};
+
+document.body.addEventListener('click', high5);
+
+['Nick', 'Stuart', 'Tim', 'Paul'].forEach(high5);
