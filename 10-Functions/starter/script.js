@@ -69,8 +69,6 @@ checkIn(flight, nick);
 //First-class functions and higher order functions are different things
 //First-class functions are just values - it's just a concept
 
-*/
-
 // 3. Functions Accepting Callback Functions
 
 const oneWord = function (str) {
@@ -105,3 +103,25 @@ const high5 = function () {
 document.body.addEventListener('click', high5);
 
 ['Nick', 'Stuart', 'Tim', 'Paul'].forEach(high5);
+
+// 4. Functions Returning Functions
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet('Hey');
+greeterHey('Nick');
+greeterHey('Steven');
+
+// Challenge
+
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greet('Hi')('Cedric');
+
+*/
+
+// 5. The Call and Apply Methods
