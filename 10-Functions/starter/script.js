@@ -143,7 +143,7 @@ lufthansa.book(635, 'John Smith');
 console.log(lufthansa);
 
 const eurowings = {
-  name: 'Eurowings',
+  airline: 'Eurowings',
   iataCode: 'EW',
   bookings: [],
 };
@@ -153,8 +153,27 @@ const book = lufthansa.book;
 // Does NOT work
 // book(23, 'Sarah Williams');
 
+// Call method
 book.call(eurowings, 23, 'Sarah Williams');
 console.log(eurowings);
 
 book.call(lufthansa, 239, 'Mark Cooper');
 console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Airlines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 583, 'Mary Cooper');
+console.log(swiss);
+
+// Apply method (not used much in modern JS)
+
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+// We now tend to use the spread operator instead
+book.call(swiss, ...flightData);
