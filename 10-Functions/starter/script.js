@@ -104,7 +104,7 @@ document.body.addEventListener('click', high5);
 
 ['Nick', 'Stuart', 'Tim', 'Paul'].forEach(high5);
 
-// 4. Functions Returning Functions
+// 4. Functions Returning Functions -----
 
 const greet = function (greeting) {
   return function (name) {
@@ -124,7 +124,7 @@ greet('Hi')('Cedric');
 
 */
 
-// 5. The Call and Apply Methods
+// 5. The Call and Apply Methods -----
 
 const lufthansa = {
   airline: 'Lufthansa',
@@ -132,9 +132,9 @@ const lufthansa = {
   bookings: [],
   book(flightNum, name) {
     console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}`
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
     );
-    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
   },
 };
 
@@ -177,3 +177,49 @@ console.log(swiss);
 
 // We now tend to use the spread operator instead
 book.call(swiss, ...flightData);
+
+// 6. The Bind Method
+
+// book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams');
+
+// Partial Application - part of the argument of the original function are already applied
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Nick Williams');
+bookEW23('Martha Cooper');
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+
+console.log(addVAT2(100));
+console.log(addVAT2(23));
