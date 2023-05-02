@@ -223,7 +223,6 @@ const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
 
-*/
 
 // CODING CHALLENGE 1 -----
 
@@ -270,3 +269,24 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
+
+*/
+
+// 7. Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
