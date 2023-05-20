@@ -193,9 +193,7 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 
-*/
-
-'use strict';
+// 5. Coding Challenge 1
 
 const checkDogs = function (dogsJulia, dogsKate) {
   const dogsJuliaCopy = [...dogsJulia.slice(1, -2)];
@@ -213,3 +211,37 @@ const checkDogs = function (dogsJulia, dogsKate) {
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+*/
+
+// 6. Data Transformations: map, filter, reduce
+
+// MAP is like ForEach but creates a new array - it 'maps' the value of the original array to a new array
+
+// FILTER is used to filter for certain elements within a current array - it returns a new array containing the elements that passed the test condition
+
+// REDUCE we use this to boil down all the elements into a single value - e.g. it could add all the array elements together into one number. It has 'reduced' the array to one single calue. No new array is created, just the reduced value is returned.
+
+// 7. The Map Method
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const movementsUsd = movements.map(mov => mov * eurToUsd);
+
+console.log(movements);
+console.log(movementsUsd);
+
+const movementsUsdFor = [];
+for (const mov of movements) movementsUsdFor.push(mov * eurToUsd);
+console.log(movementsUsdFor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movementsDescriptions);
