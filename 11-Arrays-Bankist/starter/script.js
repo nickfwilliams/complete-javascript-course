@@ -2,6 +2,9 @@
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+
+/*
+
 // BANKIST APP
 
 // Data
@@ -83,7 +86,7 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-/*
+
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -191,3 +194,22 @@ currenciesUnique.forEach(function (value, _, map) {
 });
 
 */
+
+'use strict';
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCopy = [...dogsJulia.slice(1, -2)];
+  console.log(dogsJuliaCopy);
+  const allDogs = dogsJuliaCopy.concat(dogsKate);
+  console.log(allDogs);
+  allDogs.forEach(function (age, i) {
+    if (age < 3) {
+      console.log(`Dog number ${i + 1} is still a puppy.`);
+    } else {
+      console.log(`Dog number ${i + 1} is an adult, and is ${age} years old.`);
+    }
+  });
+};
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
