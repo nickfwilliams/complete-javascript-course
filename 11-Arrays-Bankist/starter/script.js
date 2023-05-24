@@ -214,7 +214,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 };
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 
 
@@ -283,17 +283,15 @@ console.log(movements);
 console.log(deposits);
 console.log(withdrawals);
 
-*/
-
 // 10. The Reduce Method
 
 console.log(movements);
 
-// accumulator is like a SNOWBALL
-// const balance = movements.reduce(function (acc, cur, i, arr) {
-//   console.log(`Iteration ${i}: ${acc}`);
-//   return acc + cur;
-// }, 0);
+accumulator is like a SNOWBALL
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
 
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
@@ -310,3 +308,33 @@ const max = movements.reduce(
 );
 
 console.log(max);
+
+*/
+
+// 5. Coding Challenge 2
+
+// TEST DATA 1: [5, 2 ,4, 1, 15, 8, 3]
+// TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+
+  const adults = humanAges.filter(age => age >= 18);
+  console.log(humanAges);
+  console.log(adults);
+
+  const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+
+  return average;
+};
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1, avg2);
+
+// console.log(
+//   calcAverageHumanAge.filter(function (dogAge) {
+//     return dogAge >= 18;
+//   })
+// );
