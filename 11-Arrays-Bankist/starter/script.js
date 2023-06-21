@@ -228,32 +228,9 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-// Some and Every
-
-console.log(movements);
-
-// The SOME method returns TRUE if one of the elements in an array is matched
-
-// SOME: Checks Equality
-console.log(movements.includes(-130));
-
-// SOME: Checks Condition
-console.log(movements.some(mov => mov === -130));
-
-const anyDeposits = movements.some(mov => mov > 0);
-console.log(anyDeposits);
-
-// The EVERY method returns TRUE if ALL of the elements in an array are matched
-console.log(movements.every(mov => mov > 0));
-console.log(account4.movements.every(mov => mov > 0));
-
-// Separate callback
-const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
-
 /*
+
+
 
 // 1. Simple Array Methods
 
@@ -353,25 +330,26 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${value}: ${value}`);
 });
 
-// 5. Coding Challenge 1
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCopy = [...dogsJulia.slice(1, -2)];
-  console.log(dogsJuliaCopy);
-  const allDogs = dogsJuliaCopy.concat(dogsKate);
-  console.log(allDogs);
-  allDogs.forEach(function (age, i) {
-    if (age < 3) {
-      console.log(`Dog number ${i + 1} is still a puppy.`);
-    } else {
-      console.log(`Dog number ${i + 1} is an adult, and is ${age} years old.`);
-    }
-  });
-};
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+// 6. The Magic of Chaining Methods
+const eurToUsd = 1.1;
+console.log(movements);
 
+//You can chain if the method produces an array
+
+// It's like a PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd;
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+
+// We couldn't have chained anything after reduce as it produces a value, not a filter
+
+console.log(totalDepositsUSD);
 
 
 // 6. Data Transformations: map, filter, reduce
@@ -406,7 +384,6 @@ const movementsDescriptions = movements.map(
 
 console.log(movementsDescriptions);
 
-// 8. Computing Usernames
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -421,7 +398,25 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 console.log(accounts);
 
+// 8. The Find Method - Returns ONLY the element
 
+const firstWithdrawl = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawl);
+
+// Important: The FILTER method returns a whole new array
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+// Same as above but using FOR OF loop
+
+// const account = [];
+// for (const acc of accounts)
+//   if (acc.owner === 'Jessica Davis') account.push(acc);
+// console.log(account);
 
 // 9. The Filter Method
 
@@ -465,8 +460,76 @@ const max = movements.reduce(
 
 console.log(max);
 
+// 11. Some and Every Methods
 
-// 5. Coding Challenge 2
+console.log(movements);
+
+// The SOME method returns TRUE if one of the elements in an array is matched
+
+// SOME: Checks Equality
+console.log(movements.includes(-130));
+
+// SOME: Checks Condition
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// The EVERY method returns TRUE if ALL of the elements in an array are matched
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+
+*/
+
+// 12. flat and flatMap Methods
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// flat
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// flatMap
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+/* --------------- CODING CHALLENGES --------------- 
+
+// Coding Challenge 1
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCopy = [...dogsJulia.slice(1, -2)];
+  console.log(dogsJuliaCopy);
+  const allDogs = dogsJuliaCopy.concat(dogsKate);
+  console.log(allDogs);
+  allDogs.forEach(function (age, i) {
+    if (age < 3) {
+      console.log(`Dog number ${i + 1} is still a puppy.`);
+    } else {
+      console.log(`Dog number ${i + 1} is an adult, and is ${age} years old.`);
+    }
+  });
+};
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+// Coding Challenge 2
 
 // TEST DATA 1: [5, 2 ,4, 1, 15, 8, 3]
 // TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
@@ -494,28 +557,7 @@ console.log(avg1, avg2);
 //   })
 // );
 
-
-
-// 6. The Magic of Chaining Methods
-const eurToUsd = 1.1;
-console.log(movements);
-
-//You can chain if the method produces an array
-
-// It's like a PIPELINE
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map((mov, i, arr) => {
-    // console.log(arr);
-    return mov * eurToUsd;
-  })
-  .reduce((acc, mov) => acc + mov, 0);
-
-// We couldn't have chained anything after reduce as it produces a value, not a filter
-
-console.log(totalDepositsUSD);
-
-// 7. Coding Challenge 3
+// Coding Challenge 3
 
 const calcAverageHumanAge = ages =>
   ages
@@ -527,27 +569,5 @@ const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1, avg2);
-
-
-
-// 8. The Find Method - Returns ONLY the element
-
-const firstWithdrawl = movements.find(mov => mov < 0);
-console.log(movements);
-console.log(firstWithdrawl);
-
-// Important: The FILTER method returns a whole new array
-
-console.log(accounts);
-
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
-
-// Same as above but using FOR OF loop
-
-// const account = [];
-// for (const acc of accounts)
-//   if (acc.owner === 'Jessica Davis') account.push(acc);
-// console.log(account);
 
 */
