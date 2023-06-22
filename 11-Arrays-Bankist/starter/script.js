@@ -485,8 +485,6 @@ console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
 
-*/
-
 // 12. flat and flatMap Methods
 
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
@@ -507,6 +505,10 @@ const overallBalance2 = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance);
+
+*/
+
+// 13. Sorting Arrays
 
 /* --------------- CODING CHALLENGES --------------- 
 
