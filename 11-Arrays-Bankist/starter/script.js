@@ -510,6 +510,33 @@ console.log(overallBalance);
 
 // 13. Sorting Arrays
 
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+
+// Return < 0, - A, B (Keep order)
+// Return > 0 - B, A (Switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
+
 /* --------------- CODING CHALLENGES --------------- 
 
 // Coding Challenge 1
