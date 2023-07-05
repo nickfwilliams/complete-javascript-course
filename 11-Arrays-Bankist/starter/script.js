@@ -515,7 +515,6 @@ const overallBalance2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance);
 
-*/
 
 // 13. Sorting Arrays
 
@@ -545,6 +544,36 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+*/
+
+// 14. Creating and Filling Arrays
+
+// This creates an array of 7 empty items
+const x = new Array(7);
+console.log(x);
+
+// This fills the above array with seven 1s
+x.fill(1);
+
+// This starts to fill 1s from index position 3 upto index 5
+x.fill(1, 3, 5);
+console.log(x);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
 
 /* --------------- CODING CHALLENGES --------------- 
 
