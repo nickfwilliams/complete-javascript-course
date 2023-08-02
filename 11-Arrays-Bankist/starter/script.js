@@ -727,8 +727,6 @@ Eating an okay amount means the dog's current food portion is within a range 10%
 HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
 HINT 2: Being within a range 10% above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
 
-*/
-
 // TEST DATA:
 
 const dogs = [
@@ -738,7 +736,7 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-// 1.
+// // 1.
 dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)));
 console.log(dogs);
 
@@ -767,3 +765,20 @@ console.log(ownersEatTooLittle);
 
 console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
 console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+// 5.
+console.log(dogs.some(dog => dog.curFood === dog.recFood));
+
+// 6.
+const healthyDogs = dog =>
+  dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1;
+
+// 7.
+console.log(dogs.filter(healthyDogs));
+
+// 8.
+const dogsSorted = [...dogs];
+
+console.log(dogsSorted.sort((a, b) => a.recFood - b.recFood));
+
+*/
