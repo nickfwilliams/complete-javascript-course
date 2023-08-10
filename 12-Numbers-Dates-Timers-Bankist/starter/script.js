@@ -329,8 +329,6 @@ console.log((2.7).toFixed(3));
 console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2)); // Converted to a number
 
-*/
-
 // 3. The Remainder Operator - %
 
 console.log(5 % 2);
@@ -367,3 +365,34 @@ const PI = 3.14_15;
 console.log(PI);
 
 console.log(Number('230000'));
+
+*/
+
+// 5. Working with BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+// The 'n' transforms a regular number into a Big Int
+console.log(48349374987239847918734910809318n);
+console.log(BigInt(48349374987239847918734910809318n));
+
+// Operations
+
+console.log(10000n + 10000n);
+console.log(4797328497298743678236479827492837498237n * 1000000000n);
+
+// BigInts can't be mixed with regular numbers
+
+const huge = 88974892734972348273n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Logical operators are exceptions
+console.log(20n > 15); // True
+console.log(20n === 20); // False
+
+// Divisions
+
+console.log(10n / 3n);
+console.log(10 / 3);
