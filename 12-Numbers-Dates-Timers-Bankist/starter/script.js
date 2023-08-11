@@ -366,8 +366,6 @@ console.log(PI);
 
 console.log(Number('230000'));
 
-*/
-
 // 5. Working with BigInt
 
 console.log(2 ** 53 - 1);
@@ -396,3 +394,53 @@ console.log(20n === 20); // False
 
 console.log(10n / 3n);
 console.log(10 / 3);
+
+*/
+
+// 6. Creating Dates
+
+// There are four ways to create a date
+/*
+// 1. Allow JS to get the date
+
+const now = new Date();
+console.log(now);
+
+// 2. Using a string
+
+console.log(new Date('June 02 2023 18:05:41'));
+console.log(new Date('December 24, 2015'));
+console.log(new Date(account1.movementsDates[0]));
+
+// 3. Using Numbers - the month system is 0-based (10 means November)
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+console.log(new Date(2037, 10, 31)); // JS auto corrects dates which don't exist
+
+// 4. Using time since Unix launched
+
+console.log(new Date(0)); // Seconds after Unix release time
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); // Seconds after Unix release time - 3 days later
+
+
+// Working with dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear()); // Always use Get Full Year
+console.log(future.getMonth()); // Zero based
+console.log(future.getDate()); // Day of the Month
+console.log(future.getDay()); // Day of the Week
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime()); // Timestamp for date - milliseconds since Jan 1 1970
+
+console.log(new Date(2142256980000)); // Getting the time using a time stamp
+
+console.log(Date.now()); // Produces a time stamp at that moment
+
+future.setFullYear(2040);
+console.log(future);
+
+*/
