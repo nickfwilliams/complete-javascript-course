@@ -166,6 +166,20 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // const observer = new IntersectionObserver(obsCallBack, obsOptions);
 // observer.observe(section1);
 
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
+
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 
@@ -532,25 +546,26 @@ console.log(h1.parentElement.children); // A way to get ALL siblings
   if (el !== h1) el.style.transform = 'scale(0.5)';
 });
 
+
+Lesson 9. Building a tabbed component
+See tabbed component in site above
+
+Lesson 10. Passing Arguments to Event Handlers
+See menu fade in site above
+
+Lesson 11: Implementing a Sticky Navigation: The Scroll Event
+See code above
+
+Lesson 12: Sticky with Intersection Observer API
+See code above
+
+Lesson 13: Revealing ELements on Scroll
+See code above
+
+Lesson 14: Lazy Loading
+See code above
+
+Lesson 15: Slider Component Part 1
+Lesson 16: Slider Component Part 2
+
 */
-
-// Lesson 9. Building a tabbed component
-// See tabbed component in site above
-
-// Lesson 10. Passing Arguments to Event Handlers
-// See menu fade in site above
-
-// Lesson 11: Implementing a Sticky Navigation: The Scroll Event
-// See code above
-
-// Lesson 12: Sticky with Intersection Observer API
-// See code above
-
-// Lesson 13: Revealing ELements on Scroll
-// See code above
-
-// Lesson 14: Lazy Loading
-// See code above
-
-// Lesson 15: Slider Component Part 1
-// Lesson 16: Slider Component Part 2
