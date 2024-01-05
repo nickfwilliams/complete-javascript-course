@@ -24,3 +24,18 @@ const jack = new Person('Jack', 1975);
 console.log(matilda, jack);
 
 console.log(nick instanceof Person);
+
+// Prototypes
+console.log(Person.prototype);
+
+// Rather than place this function in the Constructor function (top of page) we attached it to the Person.prototype which means there's only ever one copy of it.
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+// You can use calcAge because of Prototypal inheritance
+nick.calcAge();
+
+Person.prototype.species = 'Homo sapiens';
+console.log(nick.species);
+console.log(nick.hasOwnProperty('species'));
