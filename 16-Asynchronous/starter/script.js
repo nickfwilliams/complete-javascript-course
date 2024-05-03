@@ -6,27 +6,26 @@ const countriesContainer = document.querySelector('.countries');
 ///////////////////////////////////////
 
 const renderCountry = function (data, className = '') {
-  const languageCode = Object.keys(data.languages)[0];
-  const languageName = data.languages[languageCode];
-  const currencyCode = Object.keys(data.currencies)[0];
-  const currencyName = data.currencies[currencyCode].name;
-
   const html = ` <article class="country ${className}">
           <img class="country__img" src="${data.flags.png}" />
           <div class="country__data">
-            <h3 class="country__name">${data.name.common}</h3>
+            <h3 class="country__name">${data.name}</h3>
             <h4 class="country__region">${data.region}</h4>
             <p class="country__row"><span>👫</span>${(
               +data.population / 1000000
             ).toFixed(2)} million people</p>
-            <p class="country__row"><span>🗣️</span>${languageName}</p>
-            <p class="country__row"><span>💰</span>${currencyName}</p>
+            <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+            <p class="country__row"><span>💰</span>${
+              data.currencies[0].name
+            }</p>
           </div>
         </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
+
+/*
 
 const getCountryAndNeighbour = function (country) {
   // AJAX call country 1
@@ -63,3 +62,37 @@ const getCountryAndNeighbour = function (country) {
 
 // getCountryAndNeighbour('portugal');
 getCountryAndNeighbour('mexico');
+
+*/
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+const getCountryData = function (country) {
+  // Country 1
+  fetch(`https://countries-api-836d.onrender.com/countries/name/${country}`)
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      if (!neighbour) return;
+      console.log(data);
+      // Country 2
+      return fetch(
+        `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`
+      );
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};
+
+getCountryData('bolivia');
