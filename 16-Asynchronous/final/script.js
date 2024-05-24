@@ -183,7 +183,7 @@ setTimeout(() => {
 const getCountryData = function (country) {
   // Country 1
   getJSON(
-    `https://restcountries.eu/rest/v2/name/${country}`,
+    `https://countries-api-836d.onrender.com/countries/name/${country}`,
     'Country not found'
   )
     .then(data => {
@@ -194,7 +194,7 @@ const getCountryData = function (country) {
 
       // Country 2
       return getJSON(
-        `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+        `https://countries-api-836d.onrender.com/countries/alpha/${neighbour}`,
         'Country not found'
       );
     })
